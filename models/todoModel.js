@@ -9,4 +9,6 @@ const todoSchema = Schema(
     }
 ) 
 
-module.exports = todoSchema
+const TD = mongoose.model('Todo', todoSchema);
+
+module.exports = TD

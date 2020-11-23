@@ -1,5 +1,5 @@
-const todoSchema = require('./models/todoModel')
-const userSchema = require('./models/userModel')
+const TD = require('./models/todoModel')
+const USER = require('./models/userModel')
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -8,9 +8,6 @@ const PORT = 8080
 const app = express();
 const dbURI = 'mongodb://localhost:27017/todo'
 
-
-const USER = mongoose.model('User', userSchema);
-const TD = mongoose.model('Todo', todoSchema);
 
 mongoose.connect(dbURI)
     .then(() => app.listen(PORT))
