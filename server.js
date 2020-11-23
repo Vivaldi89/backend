@@ -1,5 +1,5 @@
-const todoSchema = require('./todoModel')
-const userSchema = require('./userModel')
+const todoSchema = require('./models/todoModel')
+const userSchema = require('./models/userModel')
 const express = require('express');
 const mongoose = require('mongoose');
 
