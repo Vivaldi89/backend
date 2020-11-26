@@ -13,11 +13,11 @@ router.post('/add', tokenCheck, (req, res) => {
      .catch((err) => res.json({ error: err }))
 })
 
-router.put('/update/:id/:check', tokenCheck, (req, res) => {
-    TD.findOneAndUpdate({
+router.get('/update/:id/:check', tokenCheck, (req, res) => {
+    TD.updateOne({
         id: req.params.id,
         user: req.user
-    }, {$set:{ checked: req.params.check }},
+    }, { checked: Boolean(req.params.check) }, //{$set:
     (err, newTD) => {
         if (err) res.status(204).send(err)
         else res.send({ msg: "Success"})
@@ -51,7 +51,7 @@ router.delete('/delcompleted', tokenCheck, (req, res) => {
     }
 )})
 
-router.put('/checkall', tokenCheck, (req, res) => {
+router.get('/checkall', tokenCheck, (req, res) => {
     TD.updateMany({ checked: false, user: req.user }, {$set: {checked: true}},
         (err, o) => {
             if (err) res.json({ msg: "Error"})
@@ -59,7 +59,7 @@ router.put('/checkall', tokenCheck, (req, res) => {
         })
 })
 
-router.put('/uncheckall', tokenCheck, (req, res) => {
+router.get('/uncheckall', tokenCheck, (req, res) => {
     TD.updateMany({ checked: true, user: req.user  }, {$set: {checked: false}},
         (err, o) => {
             if (err) res.json({ msg: "Error"})
