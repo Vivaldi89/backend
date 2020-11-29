@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+const Joi = require('@hapi/joi');
 
 const registerSchema = Joi.object({
     name: Joi.string().max(250).required(),
@@ -7,4 +7,4 @@ const registerSchema = Joi.object({
 })
 
 
-module.exports = registerSchema
+module.exports = registerSchema;

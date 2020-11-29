@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+const Joi = require('@hapi/joi');
 
 
 const loginSchema = Joi.object({
@@ -6,4 +6,4 @@ const loginSchema = Joi.object({
     password: Joi.string().min(4).max(250)
 })
 
-module.exports = loginSchema
+module.exports = loginSchema;

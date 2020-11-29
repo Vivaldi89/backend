@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken');
 
 module.exports = function(req, res, next) {
     const token = req.header('todo-token');
@@ -8,8 +7,8 @@ module.exports = function(req, res, next) {
     try {
         const verified = jwt.verify(token, process.env.SECRET);
         req.user = verified;
-        next()
+        next();
     } catch (error) {
-        res.status(400).send({ msg: "Not Verified" })
+        res.status(400).send({ msg: "Not Verified" });
     }
 }
