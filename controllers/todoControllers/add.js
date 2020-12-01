@@ -1,9 +1,6 @@
-const TD = require('../model/todoModel');
-const router = require('express').Router();
-const tokenCheck = require('../tokenVerifier');
+const TD = require('../../model/todoModel');
 
-
-router.post('/add', tokenCheck, async (req, res) => {
+exports.add = async (req, res) => {
     const newTodo = new TD();
     newTodo.id = req.body.id;
     newTodo.text = req.body.text;
@@ -15,6 +12,4 @@ router.post('/add', tokenCheck, async (req, res) => {
     } else {
     res.json({ error: "Bad request" });
     }
-})
-
-module.exports = router;
+}

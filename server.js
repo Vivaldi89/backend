@@ -1,32 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const add = require('./routes/add')
-const todos = require('./routes/todos')
-const delOne = require('./routes/deleteOne')
-const delCompleted = require('./routes/delCompleted')
-const checkAll = require('./routes/checkAll')
-const uncheckAll = require('./routes/uncheckAll')
-const markAsChecked = require('./routes/markAsChecked')
-const login = require('./routes/login')
-const register = require('./routes/register')
+const auth =require('./routes/auth');
+const todo = require('./routes/todo');
+
 
 const app = express();
 app.use(express.json());
 
-app.use('/auth',
-    register,
-    login
-    );
 
-app.use('/api', 
-    add, 
-    todos, 
-    delOne, 
-    delCompleted, 
-    checkAll, 
-    uncheckAll, 
-    markAsChecked
-    );
+app.use('/auth', auth);
+app.use('/api', todo);
 
 
 const PORT = 8080;

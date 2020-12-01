@@ -1,8 +1,6 @@
-const TD = require('../model/todoModel');
-const router = require('express').Router();
-const tokenCheck = require('../tokenVerifier');
+const TD = require('../../model/todoModel');
 
-router.put('/update/:id/:check', tokenCheck, (req, res) => {
+exports.markAsChecked = async (req, res) => {
     TD.updateOne({
         id: req.params.id,
         user: req.user
@@ -15,6 +13,4 @@ router.put('/update/:id/:check', tokenCheck, (req, res) => {
             res.send({ msg: "Success"});
         }
     }
-)})
-
-module.exports = router;
+)}

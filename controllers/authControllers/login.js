@@ -1,11 +1,10 @@
 require('dotenv').config();
-const USER = require('../model/userModel');
-const router = require('express').Router();
-const loginSchema = require('../validateLogin');
+const USER = require('../../model/userModel');
+const loginSchema = require('../../validateLogin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-router.post('/login', async (req, res) => {
+exports.login = async (req, res) => {
     const { error } = await loginSchema.validate(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
@@ -27,6 +26,4 @@ router.post('/login', async (req, res) => {
         .status(200)
         .header('todo-token', token)
         .send(token)
-})
-
-module.exports = router
+}

@@ -1,8 +1,6 @@
-const TD = require('../model/todoModel');
-const router = require('express').Router();
-const tokenCheck = require('../tokenVerifier');
+const TD = require('../../model/todoModel');
 
-router.delete('/delcompleted', tokenCheck, (req, res) => {
+exports.delCompleted = async (req, res) => {
     TD.deleteMany({
         checked: true,
         user: req.user
@@ -14,6 +12,4 @@ router.delete('/delcompleted', tokenCheck, (req, res) => {
             res.json({ msg: "SUCCESS"});
         }
     }
-)})
-
-module.exports = router;
+)}

@@ -1,8 +1,6 @@
-const TD = require('../model/todoModel');
-const router = require('express').Router();
-const tokenCheck = require('../tokenVerifier');
+const TD = require('../../model/todoModel');
 
-router.delete('/del/:id', tokenCheck, (req, res) => {
+exports.deleteOne = async (req, res) => {
     const num = Number(req.params.id)
     TD.findOneAndDelete ({
         id: num,
@@ -15,6 +13,4 @@ router.delete('/del/:id', tokenCheck, (req, res) => {
             res.json({ msg: "SUCCESS"});
         }
     }
-)})
-
-module.exports = router;
+)}

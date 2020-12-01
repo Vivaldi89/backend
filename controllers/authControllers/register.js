@@ -1,10 +1,7 @@
-const USER = require('../model/userModel');
-const router = require('express').Router();
-const registerSchema = require('../validator');
+const USER = require('../../model/userModel');
 const bcrypt = require('bcryptjs');
-// const tokenCheck = require('../tokenVerifier');
 
-router.post('/register', async (req, res) => {
+exports.register =  async (req, res) => {
     const { error } = registerSchema.validate(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
@@ -34,6 +31,4 @@ router.post('/register', async (req, res) => {
         res.json({ msg: error});
     }
     
-})
-
-module.exports = router;
+}

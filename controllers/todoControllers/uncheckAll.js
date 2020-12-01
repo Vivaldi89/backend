@@ -1,8 +1,6 @@
-const TD = require('../model/todoModel');
-const router = require('express').Router();
-const tokenCheck = require('../tokenVerifier');
+const TD = require('../../model/todoModel');
 
-router.put('/uncheckall', tokenCheck, (req, res) => {
+exports.uncheckAll = async (req, res) => {
     TD.updateMany({ checked: true, user: req.user  }, {$set: {checked: false}},
         (err, o) => {
             if (err) {
@@ -12,6 +10,4 @@ router.put('/uncheckall', tokenCheck, (req, res) => {
                 res.json({ msg: "SUCCESS"});
             }
         })
-})
-
-module.exports = router;
+}
