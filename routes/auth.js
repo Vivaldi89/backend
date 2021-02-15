@@ -4,5 +4,5 @@ const loginController = require('../controllers/authControllers/login');
 
 router.post('/register', registerController.register);
 router.post('/login', loginController.login);
-
+// sfsdf
 module.exports = router;
